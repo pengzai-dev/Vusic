@@ -13,7 +13,7 @@ const store = createStore(
             window.__REDUX_DEVTOOLS_EXTENSION__())
 );
 
-ReactDom.render(
+ReactDom.hydrate(
     <Provider store={store}>
         <App />
     </Provider>,
