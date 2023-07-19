@@ -16,7 +16,7 @@ import Search from './Search';
 import About from './About';
 import Playlist from '../fragment/Playlist';
 import { Skeleton } from '@material-ui/lab';
-
+import { useLocation } from 'react-router-dom';
 function getCurrPage(pathName) {
     switch (pathName) {
         case '/home':
@@ -38,26 +38,31 @@ function getCurrPage(pathName) {
 }
 
 function Home() {
-    console.log('Home');
     const [screenSize, setScreenSize] = useState(undefined);
     const [currMusic, setCurrMusic] = useState(null);
     const [Page, setCurrPage] = useState(<MusicCardContainer />);
+    const location = useLocation();
+    console.log('location', location);
+    let pathname = location.pathname;
+    useEffect(() => {
+        setCurrPage(getCurrPage(pathname));
+    }, [pathname]);
 
-    // let pathname = window.location.pathname;
-    // useEffect(() => {
-    //     setCurrPage(getCurrPage(pathname))
-    // }, [pathname]);
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', handleResize);
+    }
+    function handleResize() {
+        if (typeof window === 'undefined') return;
+        setScreenSize(window.innerWidth);
+    }
 
-    // window.addEventListener("resize", handleResize);
-
-    // function handleResize() {
-    //     setScreenSize(window.innerWidth);
-    // }
-
-    // useEffect(() => {
-    //     handleResize();
-    //     return () => window.removeEventListener("resize", handleResize);
-    // });
+    useEffect(() => {
+        handleResize();
+        return () => {
+            if (typeof window !== 'undefined')
+                window.removeEventListener('resize', handleResize);
+        };
+    });
 
     const useStyle = useContext(ThemeContext);
     const { playing, bannerOpen } = useSelector((state) => state.musicReducer);
