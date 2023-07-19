@@ -42,7 +42,6 @@ function Home() {
     const [currMusic, setCurrMusic] = useState(null);
     const [Page, setCurrPage] = useState(<MusicCardContainer />);
     const location = useLocation();
-    console.log('location', location);
     let pathname = location.pathname;
     useEffect(() => {
         setCurrPage(getCurrPage(pathname));
@@ -75,9 +74,6 @@ function Home() {
     useEffect(() => {
         setLoaded(true);
     }, []);
-
-    console.log('Home');
-    console.log('style', useStyle.component);
     return (
         <div style={useStyle.component} className={'home-container'}>
             {!loaded ? (
