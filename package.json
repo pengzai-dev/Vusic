@@ -27,7 +27,8 @@
     "start": "norejs-ssr start",
     "build": "norejs-ssr build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "norejs-ssr serve"
   },
   "eslintConfig": {
     "extends": [
