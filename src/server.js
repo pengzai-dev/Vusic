@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 // This is the server-side entry point.
-export default function renderApp(req) {
+export default async function renderApp(req) {
     const store = createStore(reducers, {});
     const sheets = new ServerStyleSheets();
     const html = ReactDom.renderToString(
