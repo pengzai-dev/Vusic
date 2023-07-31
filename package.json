@@ -48,6 +48,6 @@
     ]
   },
   "devDependencies": {
-    "@norejs/ssr-cli": "workspace:^0.0.3"
+    "@norejs/ssr-cli": "workspace:^1.0.0"
   }
 }
