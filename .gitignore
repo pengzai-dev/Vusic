@@ -31,3 +31,4 @@ src/api/swl.js
 .env
 
 src/del.json
+.turbo
